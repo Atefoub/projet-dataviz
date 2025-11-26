@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
-import Accueil from "./Accueil";
-import Analyse from "./Analyses";
+import Accueil from "./pages/Accueil";
+import Analyse from "./pages/Analyse";
 
 const App: React.FC = () => {
   return (
