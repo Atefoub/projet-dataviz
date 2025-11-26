@@ -4,7 +4,7 @@ import App from './App';                                   // Importe le composa
 import './styles/index.css';                               // Importe les styles globaux de l'application
 
 createRoot(document.getElementById('root')!).render(       // Crée la racine React en ciblant l'élément HTML avec l'id "root" et démarre le rendu
-  <StrictMode>                                             // Active StrictMode pour vérifier les bonnes pratiques et avertir en cas de problème
-    <App />                                                // Rend le composant principal App à l'intérieur de StrictMode
+  <StrictMode>                                             
+    <App />                                                
   </StrictMode>                                            // Fin de StrictMode
 );                                                         // Termine l'appel à render
