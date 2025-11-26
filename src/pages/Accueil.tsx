@@ -9,19 +9,23 @@ const Accueil: React.FC = () => {
         bg-cover 
         bg-center 
         bg-no-repeat 
-        flex 
-        items-center 
-        justify-center 
+        flex  
+        justify-center
+        items-start
+        pt-20 
         px-6
+        relative
       "
-      style={{ backgroundImage: 'url("/film-production.webp")' }}
+      style={{ backgroundImage: 'url("/fond-ecran-accueil.webp")' }}
     >
       {/* Overlay dégradé pour lisibilité */}
       <div className="absolute inset-0 bg-black/50"></div>
 
       <div
-        className="relative z-10 bg-white/10 backdrop-blur-lg border border-white/20 
-          p-10 rounded-3xl shadow-2xl max-w-lg text-center"
+        className="relative z-10 
+            bg-white/10 backdrop-blur-lg border border-white/20
+            p-8 rounded-3xl shadow-2xl 
+            max-w-3xl w-full"
       >
         <h1 className="text-4xl md:text-5xl font-bold text-white drop-shadow-lg">
           Bienvenue 🎬
