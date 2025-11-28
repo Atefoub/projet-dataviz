@@ -7,7 +7,7 @@ export const router = createBrowserRouter([
   // Crée et exporte un routeur avec la configuration des routes
   {
     path: "/",
-    element: <Layout />,
+    element: <Layout backgroundImage="/fond-ecran-accueil.webp" />,
     children: [
       { index: true, element: <Accueil /> },
       { path: "analyse", element: <Analyse /> },

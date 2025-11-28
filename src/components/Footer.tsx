@@ -7,7 +7,7 @@ const Footer = () => {
       className="
       relative z-20
         w-full 
-        bg-black/10 backdrop-blur-lg border-t border-white/20
+        bg-white/10 backdrop-blur-lg border-t border-white/20
         text-white 
         mt-16
       "

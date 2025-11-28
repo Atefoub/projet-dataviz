@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Footer from "../components/Footer";
+// import Footer from "../components/Footer";
 
 const Accueil: React.FC = () => {
   return (
@@ -17,7 +17,7 @@ const Accueil: React.FC = () => {
         px-6
         relative
       "
-      style={{ backgroundImage: 'url("/fond-ecran-accueil.webp")' }}
+      // style={{ backgroundImage: 'url("/fond-ecran-accueil.webp")' }}
     >
       {/* Overlay dégradé pour lisibilité */}
       <div className="absolute inset-0 bg-black/50 z-0"></div>
@@ -57,7 +57,7 @@ const Accueil: React.FC = () => {
           👉 Voir la page Analyse
         </Link>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
