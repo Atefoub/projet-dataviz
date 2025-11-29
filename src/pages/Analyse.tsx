@@ -4,7 +4,7 @@ import TournagesByQuartChart from '../components/TournagesByQuartChart';
 import TournagesByArrChart from '../components/TournagesByArrChart';
 import TournagesByTypeChart from '../components/TournagesByTypeChart';
 import TopRealisateursChart from '../components/TopRealisateursChart';
-// import TypesByYearChart from '../components/TypesByYearChart';
+import TypesByYearChart from '../components/TypesByYearChart';
 
 function Analyse() {
   const { data, isLoading, error } = useParisData();
@@ -76,13 +76,9 @@ function Analyse() {
           <TopRealisateursChart data={data || []} />
         </div>
 
-        {/* Graphique 5 : Types par année (à implémenter) */}
-        {/* <TypesByYearChart data={data || []} /> */}
-        <div className="bg-gray-50 rounded-xl border-2 border-dashed border-gray-300 p-6 lg:col-span-2">
-          <h2 className="text-xl font-bold mb-4">📊 Évolution des types par année</h2>
-          <div className="h-64 flex items-center justify-center">
-            <p className="text-gray-500">Graphique à implémenter</p>
-          </div>
+        {/* Graphique 5 : Types par année (aires empilées) */}
+        <div className="bg-white rounded-xl shadow-lg p-6 lg:col-span-2">
+          <TypesByYearChart data={data || []} />
         </div>
 
       </div>
