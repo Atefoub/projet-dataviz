@@ -1,8 +1,8 @@
-/* Import Tailwind */
-@import "tailwindcss";
-
 /* Import Google Font */
 @import url("https://fonts.googleapis.com/css2?family=Science+Gothic:wght@100..900&display=swap");
+
+/* Import Tailwind */
+@import "tailwindcss";
 
 /* Police globale */
 body {
