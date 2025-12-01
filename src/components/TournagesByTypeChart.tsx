@@ -34,7 +34,7 @@ export default function TournagesByTypeChart({ data }: Props) {
 
   return (
     <div className="mb-12">
-      <h2 className="text-2xl font-bold text-gray-800 mb-4">
+      <h2 className="text-xl font-bold text-gray-800 mb-4">
         🎭 Répartition par type de tournage
       </h2>
 

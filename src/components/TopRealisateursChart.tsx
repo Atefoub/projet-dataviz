@@ -41,7 +41,7 @@ export default function TopRealisateursChart({ data }: Props) {
 
   return (
     <div className="mb-12">
-      <h2 className="text-2xl font-bold text-gray-800 mb-4">
+      <h2 className="text-xl font-bold text-gray-800 mb-4">
         🎥 Top 10 des réalisateurs
       </h2>
 
