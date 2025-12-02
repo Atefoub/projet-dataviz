@@ -9,7 +9,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import type { Tournage } from "../types/types";
-import { CHART_COLORS, TOOLTIP_STYLE, GRID_COLOR } from "../types/chartColors";
+import { CHART_COLORS, GRID_COLOR } from "../types/chartColors";
 
 interface Props {
   data: Tournage[];
@@ -17,24 +17,49 @@ interface Props {
 
 /**
  * Agrège les tournages par réalisateur et retourne le Top 10
- * Filtre les valeurs vides et trie par nombre de tournages décroissant
+ * Enrichit chaque entrée avec les années, types et titres
  */
 const getTopRealisateurs = (tournages: Tournage[], limit: number = 10) => {
-  const countMap = new Map<string, number>();
+  const realMap = new Map<
+    string,
+    {
+      count: number;
+      annees: Set<string>;
+      types: Set<string>;
+      titres: Set<string>;
+    }
+  >();
 
   tournages.forEach((t) => {
-    if (t.nom_realisateur && t.nom_realisateur.trim() !== "") {
-      const real = t.nom_realisateur.trim();
-      const count = countMap.get(real) || 0;
-      countMap.set(real, count + 1);
+    const real = t.nom_realisateur?.trim();
+    if (!real) return;
+
+    if (!realMap.has(real)) {
+      realMap.set(real, {
+        count: 0,
+        annees: new Set(),
+        types: new Set(),
+        titres: new Set(),
+      });
     }
+
+    const entry = realMap.get(real)!;
+    entry.count += 1;
+    if (t.annee_tournage) entry.annees.add(t.annee_tournage);
+    if (t.type_tournage) entry.types.add(t.type_tournage);
+    if (t.nom_tournage) entry.titres.add(t.nom_tournage);
   });
 
-  // Convertit la Map en tableau et trie par nombre de tournages (décroissant)
-  return Array.from(countMap.entries())
-    .map(([realisateur, count]) => ({ realisateur, count }))
+  return Array.from(realMap.entries())
+    .map(([realisateur, { count, annees, types, titres }]) => ({
+      realisateur,
+      count,
+      annees: Array.from(annees).sort(),
+      types: Array.from(types),
+      titres: Array.from(titres).sort(),
+    }))
     .sort((a, b) => b.count - a.count)
-    .slice(0, limit); // Garde uniquement le Top 10
+    .slice(0, limit);
 };
 
 export default function TopRealisateursChart({ data }: Props) {
@@ -60,7 +85,7 @@ export default function TopRealisateursChart({ data }: Props) {
                 value: "Nombre de tournages",
                 position: "insideBottom",
                 offset: -10,
-                style: { fontSize: '0.75rem' }
+                style: { fontSize: "0.75rem" },
               }}
               tick={{ fontSize: 10 }}
             />
@@ -71,17 +96,26 @@ export default function TopRealisateursChart({ data }: Props) {
               width={110}
             />
             <Tooltip
-              contentStyle={TOOLTIP_STYLE}
-              wrapperClassName="border border-gray-300"
-              formatter={(value: number) => [
-                `${value} tournage${value > 1 ? "s" : ""}`,
-                "Nombre",
-              ]}
+              content={({ active, payload, label }) => {
+                if (active && payload && payload.length) {
+                  const data = payload[0].payload;
+                  return (
+                    <div className="bg-white p-2 border border-gray-300 rounded text-sm max-w-xs">
+                      <p className="font-bold">{label}</p>
+                      <p>{data.count} tournage{data.count > 1 ? "s" : ""}</p>
+                      <p><strong>Années :</strong> {data.annees.join(", ")}</p>
+                      <p><strong>Types :</strong> {data.types.join(", ")}</p>
+                      <p><strong>Titres :</strong> {data.titres.join(", ")}</p>
+                    </div>
+                  );
+                }
+                return null;
+              }}
             />
-            <Legend 
-              verticalAlign="top" 
+            <Legend
+              verticalAlign="top"
               height={36}
-              wrapperStyle={{ fontSize: '0.875rem' }}
+              wrapperStyle={{ fontSize: "0.875rem" }}
             />
             <Bar
               dataKey="count"
