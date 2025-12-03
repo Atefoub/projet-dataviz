@@ -14,7 +14,6 @@ Une application web moderne qui visualise l'activité cinématographique parisie
 [Lien vers l'application déployée](#) *(à compléter après déploiement)*
 
 ![Screenshot de l'application](./public/sc_page1.jpg)
-![Screenshot de l'application](./public/sc_page1.jpg)
 ![Screenshot de l'application](./public/sc_page2.1.jpg)
 ![Screenshot de l'application](./public/sc_page2.2jpg)
 ![Screenshot de l'application](./public/sc_page2.3jpg)
