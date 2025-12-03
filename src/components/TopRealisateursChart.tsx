@@ -133,10 +133,18 @@ export default function TopRealisateursChart({ data }: Props) {                 
                   return (
                     <div className="bg-white p-2 border border-gray-300 rounded text-sm max-w-xs">
                       <p className="font-bold">{label}</p>
-                      <p>{data.count} tournage{data.count > 1 ? "s" : ""}</p>
-                      <p><strong>Années :</strong> {data.annees.join(", ")}</p>
-                      <p><strong>Types :</strong> {data.types.join(", ")}</p>
-                      <p><strong>Titres :</strong> {data.titres.join(", ")}</p>
+                      <p>
+                        {data.count} tournage{data.count > 1 ? "s" : ""}
+                      </p>
+                      <p>
+                        <strong>Années :</strong> {data.annees.join(", ")}
+                      </p>
+                      <p>
+                        <strong>Types :</strong> {data.types.join(", ")}
+                      </p>
+                      <p>
+                        <strong>Titres :</strong> {data.titres.join(", ")}
+                      </p>
                     </div>
                   );
                 }
