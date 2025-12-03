@@ -68,14 +68,14 @@ export default function TopRealisateursChart({ data }: Props) {
 
   // Extraire les années disponibles
   const availableYears = useMemo(() => {
-    const years = new Set(data.map(t => t.annee_tournage).filter(Boolean));
+    const years = new Set(data.map((t) => t.annee_tournage).filter(Boolean));
     return Array.from(years).sort();
   }, [data]);
 
   // Filtrer les données selon l'année sélectionnée
   const filteredData = useMemo(() => {
     if (selectedYear === "all") return data;
-    return data.filter(t => t.annee_tournage === selectedYear);
+    return data.filter((t) => t.annee_tournage === selectedYear);
   }, [data, selectedYear]);
 
   const chartData = getTopRealisateurs(filteredData);
@@ -86,17 +86,20 @@ export default function TopRealisateursChart({ data }: Props) {
         <h2 className="text-lg sm:text-xl font-bold text-gray-800">
           🎥 Top 10 des réalisateurs
         </h2>
-        
+
         {/* Filtre d'année */}
         <div className="flex items-center gap-2">
-          <label htmlFor="year-filter" className="text-sm font-medium text-gray-700">
+          <label
+            htmlFor="year-filter"
+            className="text-xs font-medium text-gray-700"
+          >
             Année :
           </label>
           <select
             id="year-filter"
             value={selectedYear}
             onChange={(e) => setSelectedYear(e.target.value)}
-            className="px-3 py-1.5 text-sm border border-gray-300 rounded-lg bg-white text-gray-700 shadow-sm hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+            className="px-2 py-1 text-xs border border-gray-300 rounded-lg bg-white text-gray-700 shadow-sm hover:border-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
           >
             <option value="all">Toutes les années</option>
             {availableYears.map((year) => (
@@ -153,10 +156,18 @@ export default function TopRealisateursChart({ data }: Props) {
                   return (
                     <div className="bg-white p-2 border border-gray-300 rounded text-sm max-w-xs">
                       <p className="font-bold">{label}</p>
-                      <p>{data.count} tournage{data.count > 1 ? "s" : ""}</p>
-                      <p><strong>Années :</strong> {data.annees.join(", ")}</p>
-                      <p><strong>Types :</strong> {data.types.join(", ")}</p>
-                      <p><strong>Titres :</strong> {data.titres.join(", ")}</p>
+                      <p>
+                        {data.count} tournage{data.count > 1 ? "s" : ""}
+                      </p>
+                      <p>
+                        <strong>Années :</strong> {data.annees.join(", ")}
+                      </p>
+                      <p>
+                        <strong>Types :</strong> {data.types.join(", ")}
+                      </p>
+                      <p>
+                        <strong>Titres :</strong> {data.titres.join(", ")}
+                      </p>
                     </div>
                   );
                 }
@@ -179,9 +190,12 @@ export default function TopRealisateursChart({ data }: Props) {
       </div>
 
       <p className="text-gray-600 text-xs sm:text-sm italic mt-3 sm:mt-4">
-        Découvrez les réalisateurs et réalisatrices qui ont le plus tourné à 
-        Paris{selectedYear !== "all" ? ` en ${selectedYear}` : ""}. 
-        {selectedYear !== "all" && ` ${chartData.length} réalisateur${chartData.length > 1 ? "s" : ""} au classement cette année-là.`}
+        Découvrez les réalisateurs et réalisatrices qui ont le plus tourné à
+        Paris{selectedYear !== "all" ? ` en ${selectedYear}` : ""}.
+        {selectedYear !== "all" &&
+          ` ${chartData.length} réalisateur${
+            chartData.length > 1 ? "s" : ""
+          } au classement cette année-là.`}
       </p>
     </div>
   );
