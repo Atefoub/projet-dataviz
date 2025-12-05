@@ -11,7 +11,7 @@ Une application web moderne qui visualise l'activité cinématographique parisie
 
 ## 📸 Aperçu
 
-[Lien vers l'application déployée](#) *(à compléter après déploiement)*
+[Lien vers l'application déployée](https://projet-dataviz-davanto.vercel.app/)
 
 ![Screenshot de l'application](./public/sc_page1.jpg)
 ![Screenshot de l'application](./public/sc_page2.1.jpg)
