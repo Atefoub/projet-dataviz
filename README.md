@@ -216,7 +216,7 @@ Ce projet est sous licence MIT. Voir le fichier [LICENSE](./LICENSE) pour plus d
 
 ## 📞 Contact
 
-- 📧 Email : antoinempro@gmail.com
+- 📧 Email : antoinem1pro@gmail.com
 - 🔗 GitHub Projet : [Atefoub/projet-dataviz](https://github.com/Atefoub/projet-dataviz/)
 - 🔗 GitHub Portfolio : [lien-vers-portfolio](https://portfolio-atefoub.vercel.app/)
 
